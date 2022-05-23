@@ -15,6 +15,9 @@ export class Company {
   @Column({ nullable: false })
   name: string;
 
+  @Column({ nullable: false, enum: ['₹', '$', '€'] })
+  currency: string;
+
   @Column({ nullable: false })
   address: string;
 

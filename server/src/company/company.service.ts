@@ -14,4 +14,7 @@ export class CompanyService {
     const company = this.companyRepo.create(createCompanyDto);
     return this.companyRepo.save(company);
   }
+  findById(id: number) {
+    return this.companyRepo.findOne({id});
+  }
 }

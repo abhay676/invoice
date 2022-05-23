@@ -7,6 +7,10 @@ export class CreateCompanyDto {
 
   @IsNotEmpty()
   @IsString()
+  currency: string;
+
+  @IsNotEmpty()
+  @IsString()
   address: string;
 
   @IsNotEmpty()
