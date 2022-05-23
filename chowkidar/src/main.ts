@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3001);
-  console.log(`Server is running on ${await app.getUrl()}`);
+  console.log(`Chowkidar is running on ${await app.getUrl()}`);
 }
 bootstrap();
