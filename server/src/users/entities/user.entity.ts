@@ -44,9 +44,11 @@ export class User {
   @Column({ nullable: false, enum: ['active', 'inactive'] })
   status: string;
 
+  @Exclude()
   @OneToMany(() => Invoice, (invc) => invc.id)
   invoices: Invoice[];
 
+  @Exclude()
   @ManyToOne(() => Company, (cmp) => cmp.id)
   company: Company;
 

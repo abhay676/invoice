@@ -10,10 +10,12 @@ import {
 import axios from 'axios';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { CompanyService } from 'src/company/company.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService,
+    private readonly companyService: CompanyService) {}
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Post('/create')
@@ -27,6 +29,8 @@ export class UsersController {
         payload,
       );
       createUserDto.clientId = data.clientId;
+      const company = await this.companyService.findById(createUserDto.companyId);
+      createUserDto.company = company
       return this.usersService.create(createUserDto);
     } catch (error) {
       throw new BadRequestException(error);
